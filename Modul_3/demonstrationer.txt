@@ -1,4 +1,4 @@
-Lock
+mLock
 
 New-AzResourceLock -Lockname ej-tas-bort -locklevel CanNotDelete -ResourceGroupName easec-test-azure
 
@@ -39,7 +39,7 @@ Connect-AzAccount
 
 Get-AzContext
 
-Set-AzContext -subscription 0ac447d7-fbc3-4d3d-84d4-37bb9a71e089   behöver ej göras om bara en
+Set-AzContext -subscription <subcription_id>   behöver ej göras om bara en
 
 New-AzResourceGroup -Name easec-test-azure2 -Location northeurope
 
