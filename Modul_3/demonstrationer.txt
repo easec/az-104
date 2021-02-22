@@ -1,0 +1,64 @@
+Lock
+
+New-AzResourceLock -Lockname ej-tas-bort -locklevel CanNotDelete -ResourceGroupName easec-test-azure
+
+Get-AzResourceLock
+
+Remove-AzResourceLock -Lockname ej-tas-bort -ResourceGroupName easec-test-azure
+
+Bash
+
+az account list
+
+az resource list
+
+Azure CLI
+
+Installera:  https://aka.ms/installazurecliwindows
+
+az --version
+
+az login
+
+az group list
+
+az group list --output table
+az group list --query "[?name == 'meet']"
+
+Templates
+
+New-AzResourceGroup -Name easec-test-azure -Location northeurope
+
+https://azure.microsoft.com/en-us/resources/templates/   site
+
+New-AzResourceGroupDeployment -ResourceGroupName easec-test-azure -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
+
+Templates med PowerShell
+
+Connect-AzAccount
+
+Get-AzContext
+
+Set-AzContext -subscription 0ac447d7-fbc3-4d3d-84d4-37bb9a71e089   behöver ej göras om bara en
+
+New-AzResourceGroup -Name easec-test-azure2 -Location northeurope
+
+$templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json"
+ 
+New-AzResourceGroupDeployment -Name easec-test-azure2 -ResourceGroupName easec-test-azure2 -TemplateUri $templateUri
+
+Get-AzVM
+
+Get-AzVM -Name simple-vm -resourcegroupname easec-test-azure2
+
+$ResourceGroupName = "easec-test-azure2"
+$vm = Get-AzVM -Name simple-vm -ResourceGroupName $ResourceGroupName
+$vm.HardwareProfile.vmSize = "Standard_A3"
+Update-AzVM -ResourceGroupName $ResourceGroupName -VM $vm
+
+
+Rensa
+
+Remove-AzResourceGroup easec-test-azure -force
+
+Remove-AzResourceGroup easec-test-azure2 -force
