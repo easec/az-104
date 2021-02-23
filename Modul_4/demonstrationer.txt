@@ -1,0 +1,37 @@
+Skapa virtuellt nätverk m PowerShell
+
+$myVNet2 = New-AzVirtualNetwork -ResourceGroupName easec-test-azure -Location EastUS -Name myVNet2 -AddressPrefix 10.0.0.0/16
+
+$myVNet2 = New-AzVirtualNetwork -ResourceGroupName easec-test-azure -Location NorthEurope -Name myVNet2 -AddressPrefix 10.0.0.0/16
+
+Get-AzVirtualNetwork -Name myVNet2
+
+$mySubnet2 = Add-AzVirtualNetworkSubnetConfig -Name mySubnet2 -AddressPrefix 10.0.0.0/24 -VirtualNetwork $myVNet2
+
+Get-AzVirtualNetworkSubnetConfig -Name mySubnet2 -VirtualNetwork $myVNet2
+
+$mySubnet2 | Set-AzVirtualNetwork   Associera subnet med virtuellt nätverk
+
+
+DNS  Cloud Shell
+
+Get-AzDnsZone -Name "easec.internal.com" -ResourceGroupName easec-test-azure
+
+Get-AzDnsRecordSet -ResourceGroupName easec-test-azure -ZoneName easec.internal.com
+
+Portal 
+
+Cloud shell
+
+# Retrieve the zone information
+$zone = Get-AzDnsZone –Name easec.internal.com –ResourceGroupName easec-test-azure
+
+# Retrieve the name server records
+Get-AzDnsRecordSet –Name “@” –RecordType NS –Zone $zone
+
+nslookup arecord.easec.internal.com <name server for the zone>
+
+
+Rensa
+
+Remove-AzResourceGroup easec-test-azure -force
