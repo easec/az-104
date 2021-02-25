@@ -1,0 +1,7 @@
+az aks get-credentials --resource-group <name_resourcegroup> --name <name_k8-kluster>
+
+kubectl get nodes
+
+kubectl apply -f azure-vote.yaml
+
+kubectl get service azure-vote-front --watch
