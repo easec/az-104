@@ -1,5 +1,7 @@
 kubectl create deployment min-app --image=easec/php-webb 
 
+kubectl get pods -o wide
+
 kubectl expose deployment min-app --port 80 --type LoadBalancer
 
 kubectl get svc --watch
