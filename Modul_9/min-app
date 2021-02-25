@@ -1,0 +1,15 @@
+kubectl create deployment min-app --image=easec/php-webb 
+
+kubectl expose deployment min-app --port 80 --type LoadBalancer
+
+kubectl get svc --watch
+
+kubectl scale deployment min-app --replica=8
+
+kubectl get pods -o wide
+
+kubectl scale deployment min-app --replica=1
+
+kubectl delete deployment min-app
+
+kubectl delete svc min-app
