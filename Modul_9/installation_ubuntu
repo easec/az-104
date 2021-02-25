@@ -1,0 +1,10 @@
+git clone https://github.com/easec/Installation
+
+cd Installation
+
+sudo chmod +x installation.sh
+
+./installation.sh
+
+sudo docker run -d -p 80:80 --name webb easec/php-webb
+
