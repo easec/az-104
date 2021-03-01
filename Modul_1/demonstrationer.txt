@@ -1,0 +1,13 @@
+$SecureStringPassword = ConvertTo-SecureString -String "Pa55w.rd!" -AsPlainText -Force
+
+New-AzADUser -DisplayName "Kalle Svensson" -UserPrincipalName "kalles@easechotmail.onmicrosoft.com" -Password $SecureStringPassword -MailNickname "kalles"
+
+New-AzADGroup -DisplayName Reklam -MailNickname Reklam
+
+$ObjectGroup = Get-AzADGroup -SearchString  “Reklam”
+
+$ObjectUser = Get-AzADUser -ObjectId kalles@easechotmail.onmicrosoft.com
+
+Add-AzADGroupMember -MemberObjectId $ObjectUser.Id -TargetGroupObjectId $ObjectGroup.Id
+
+Get-AzADGroupMember -GroupObjectId $ObjectGroup.Id
