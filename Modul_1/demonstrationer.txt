@@ -1,3 +1,5 @@
+Connect-AzAccount
+
 $SecureStringPassword = ConvertTo-SecureString -String "Pa55w.rd!" -AsPlainText -Force
 
 New-AzADUser -DisplayName "Kalle Svensson" -UserPrincipalName "kalles@easechotmail.onmicrosoft.com" -Password $SecureStringPassword -MailNickname "kalles"
