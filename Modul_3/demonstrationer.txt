@@ -1,4 +1,4 @@
-mLock
+Lock
 
 New-AzResourceLock -Lockname ej-tas-bort -locklevel CanNotDelete -ResourceGroupName easec-test-azure
 
