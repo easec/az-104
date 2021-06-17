@@ -64,3 +64,5 @@ Cleanup
 Remove-AzResourceGroup easec-test-azure -force -AsJob
 
 Remove-AzResourceGroup easec-test-azure2 -force -AsJob
+
+Get-Job                                                                            #to see running jobs
