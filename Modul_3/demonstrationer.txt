@@ -56,9 +56,11 @@ $vm = Get-AzVM -Name simple-vm -ResourceGroupName $ResourceGroupName
 $vm.HardwareProfile.vmSize = "Standard_A3"
 Update-AzVM -ResourceGroupName $ResourceGroupName -VM $vm
 
+Get-AzComputeResourceSku | where {$_.Locations -icontains "northeurope"}           #to see what sizes are available for subscription and region
+
 
 Rensa
 
-Remove-AzResourceGroup easec-test-azure -force
+Remove-AzResourceGroup easec-test-azure -force -AsJob
 
-Remove-AzResourceGroup easec-test-azure2 -force
+Remove-AzResourceGroup easec-test-azure2 -force -AsJob
