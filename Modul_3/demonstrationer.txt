@@ -33,7 +33,7 @@ https://azure.microsoft.com/en-us/resources/templates/   site
 
 New-AzResourceGroupDeployment -ResourceGroupName easec-test-azure -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
 
-Templates med PowerShell
+Templates with PowerShell
 
 Connect-AzAccount
 
@@ -53,13 +53,13 @@ Get-AzVM -Name simple-vm -resourcegroupname easec-test-azure2
 
 $ResourceGroupName = "easec-test-azure2"
 $vm = Get-AzVM -Name simple-vm -ResourceGroupName $ResourceGroupName
-$vm.HardwareProfile.vmSize = "Standard_A3"
+$vm.HardwareProfile.vmSize = "Standard_A3"                                         #$vm.HardwareProfile.vmSize = "Standard_L8s_v2"
 Update-AzVM -ResourceGroupName $ResourceGroupName -VM $vm
 
 Get-AzComputeResourceSku | where {$_.Locations -icontains "northeurope"}           #to see what sizes are available for subscription and region
 
 
-Rensa
+Cleanup
 
 Remove-AzResourceGroup easec-test-azure -force -AsJob
 
